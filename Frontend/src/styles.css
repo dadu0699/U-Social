@@ -1,1 +1,5 @@
-
+* {
+  scrollbar-color: #0389c9 #edf7fb;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
