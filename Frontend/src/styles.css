@@ -1,5 +1,17 @@
+@import url(//fonts.googleapis.com/css?family=Lato:400|Inconsolata);
+
 * {
-  scrollbar-color: #0389c9 #edf7fb;
-  scrollbar-gutter: stable;
+  /* scrollbar-color: #0389c9 #edf7fb; */
   scrollbar-width: thin;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: Lato, "Helvetica Neue", Arial, Verdana, Tahoma, "Lucida Sans", FreeSans, "Lucida Sans Unicode", "Luxi Sans", sans-serif;
+  background: #e9eaed;
+  overflow-x: hidden;
 }

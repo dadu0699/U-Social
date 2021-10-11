@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PagesRoutingModule } from './pages-routing.module';
 
+import { ComponentsModule } from '../components/components.module';
+import { SharedModule } from '../shared/shared.module';
+
 import { PagesComponent } from './pages.component';
 import { FeedComponent } from './feed/feed.component';
 
@@ -21,6 +24,8 @@ import { FeedComponent } from './feed/feed.component';
     FormsModule,
     HttpClientModule,
     PagesRoutingModule,
+    ComponentsModule,
+    SharedModule
   ]
 })
 export class PagesModule { }

@@ -3,11 +3,19 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: []
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  public login: boolean;
 
-  constructor() { }
+  constructor(
+  ) {
+    this.login = true;
+  }
 
-  ngOnInit(): void { }
+  ngOnInit() { }
+
+  public alternateLog() {
+    this.login = !this.login;
+  }
 }

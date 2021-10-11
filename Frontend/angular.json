@@ -27,10 +27,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/style.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "src/assets/css/widget.css",
+              "src/assets/css/buttons.css",
+              "src/assets/css/timeline.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,10 +98,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/style.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "src/assets/css/widget.css",
+              "src/assets/css/buttons.css",
+              "src/assets/css/timeline.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           }
         }
       }
