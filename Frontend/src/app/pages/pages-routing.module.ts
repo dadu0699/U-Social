@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
 
 import { PagesComponent } from './pages.component';
+import { ChatComponent } from './chat/chat.component';
 import { FeedComponent } from './feed/feed.component';
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
     component: PagesComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: 'chat', component: ChatComponent },
       { path: 'feed', component: FeedComponent },
       { path: '', redirectTo: 'feed', pathMatch: 'full' },
     ],

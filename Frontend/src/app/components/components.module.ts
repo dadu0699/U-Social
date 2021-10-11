@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FeatherModule } from 'angular-feather';
-import { Camera, Home, ThumbsUp, User, Video } from 'angular-feather/icons';
+import { Home, Paperclip, Send, User } from 'angular-feather/icons';
 
 import { LeftLinksComponent } from './left-links/left-links.component';
 import { PostComponent } from './post/post.component';
 import { PostStateFormComponent } from './post-state-form/post-state-form.component';
 
 const icons = {
-  Camera,
   Home,
-  ThumbsUp,
+  Paperclip,
+  Send,
   User,
-  Video,
 };
 
 @NgModule({
@@ -29,6 +31,9 @@ const icons = {
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
     FeatherModule.pick(icons),
   ]
 })

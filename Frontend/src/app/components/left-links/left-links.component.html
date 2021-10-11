@@ -12,27 +12,15 @@
       </div>
       <ul class="nav nav-pills flex-column">
 
-        <li class="active">
-          <a class="flex-sm-fill nav-link" href="#">
-            <!-- <i-feather name="user"></i-feather> -->
-            News feed
-          </a>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-
-  <div class="widget">
-    <div class="widget-body">
-      <ul class="nav nav-pills flex-column">
-
-        <li>
-          <a class="flex-sm-fill nav-link" href="#">
-            <!-- <i-feather name="home"></i-feather> -->
-            Pages
-          </a>
-        </li>
+        <ng-template ngFor let-link [ngForOf]="links">
+          <li>
+            <a class="flex-sm-fill nav-link" [routerLink]="link.route" routerLinkActive="router-link-active">
+              <i-feather name="{{link.icon}}" style="width: 20px;"></i-feather>
+              &nbsp;
+              {{link.title}}
+            </a>
+          </li>
+        </ng-template>
 
       </ul>
     </div>
