@@ -15,6 +15,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesComponent } from './pages.component';
 import { ChatComponent } from './chat/chat.component';
 import { FeedComponent } from './feed/feed.component';
+import { FriendRequestsComponent } from './friend-requests/friend-requests.component';
+import { FriendSuggestionsComponent } from './friend-suggestions/friend-suggestions.component';
 
 const icons = {
   Send,
@@ -25,6 +27,8 @@ const icons = {
     PagesComponent,
     ChatComponent,
     FeedComponent,
+    FriendRequestsComponent,
+    FriendSuggestionsComponent,
   ],
   imports: [
     CommonModule,

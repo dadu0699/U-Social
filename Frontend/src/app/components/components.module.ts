@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FeatherModule } from 'angular-feather';
-import { Home, Paperclip, Send, User } from 'angular-feather/icons';
+import { Home, Paperclip, Send, User, Users } from 'angular-feather/icons';
 
 import { LeftLinksComponent } from './left-links/left-links.component';
 import { PostComponent } from './post/post.component';
@@ -16,6 +16,7 @@ const icons = {
   Paperclip,
   Send,
   User,
+  Users,
 };
 
 @NgModule({
