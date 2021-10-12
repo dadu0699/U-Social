@@ -1,5 +1,5 @@
 .error-header {
-  background: #fff;
+  background: #151617;
   height: 180px;
 }
 
@@ -9,18 +9,18 @@
 }
 
 .error-container h1 {
-  color: #39bbdb;
+  color: #00bc7e;
 }
 
 .error-container h1 {
   font-size: 110px;
   font-weight: 300;
-  margin: -103px 0 0 0;
+  margin: -120px 0 0 0;
   text-align: center;
 }
 
 .error-divider {
-  margin-top: -27px;
+  margin-top: -20px;
   padding: 30px 0;
 }
 
@@ -35,26 +35,4 @@
   color: #e5e5e5;
   font-size: 40px;
   margin: 0;
-}
-
-.return-btn,
-.return-btn:hover {
-  border: 1px solid rgba(255, 255, 255, .3);
-  padding: 10px 15px;
-  margin-top: 100px;
-  margin-bottom: 30px;
-  display: inline-block;
-  -webkit-border-radius: 5px;
-  -webkit-background-clip: padding-box;
-  -moz-border-radius: 5px;
-  -moz-background-clip: padding;
-  border-radius: 5px;
-  background-clip: padding-box;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 300;
-}
-
-a:hover {
-  text-decoration: none;
 }

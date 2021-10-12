@@ -1,24 +1,23 @@
 /*================== home profile nav ===============*/
 .profile-nav .user-heading {
-  background: #2dc3e8;
-  color: #fff;
+  background: #1e2024;
   border-radius: 4px 4px 0 0;
-  -webkit-border-radius: 4px 4px 0 0;
   padding: 30px;
   text-align: center;
+  -webkit-border-radius: 4px 4px 0 0;
 }
 
 .profile-nav .user-heading.round a {
   border-radius: 50%;
-  -webkit-border-radius: 50%;
   border: 10px solid rgba(255, 255, 255, 0.3);
   display: inline-block;
+  -webkit-border-radius: 50%;
 }
 
 .profile-nav .user-heading a img {
-  width: 112px;
-  height: 112px;
   border-radius: 50%;
+  height: 112px;
+  width: 112px;
   -webkit-border-radius: 50%;
 }
 
@@ -37,7 +36,6 @@
 }
 
 .profile-nav ul>li {
-  border-bottom: 1px solid #ebeae6;
   margin-top: 0;
   line-height: 30px;
 }
@@ -49,16 +47,16 @@
 .profile-nav ul>li>a {
   border-radius: 0;
   -webkit-border-radius: 0;
-  color: #89817f;
-  border-left: 5px solid #fff;
+  color: #bec6cf;
+  border-left: 5px solid #1e2024;
 }
 
 .profile-nav ul>li>a:hover,
 .profile-nav ul>li>a:focus,
 .profile-nav ul li.active a {
-  background: #f8f7f5 !important;
-  border-left: 5px solid #2dc3e8;
-  color: #89817f !important;
+  background: rgba(0, 188, 126, .1) !important;
+  border-left: 5px solid #00bc7e;
+  color: #00bc7e !important;
 }
 
 .profile-nav ul>li:last-child>a:last-child {
@@ -67,7 +65,21 @@
 }
 
 .profile-nav ul>li>a>i {
+  color: #bec6cf;
   font-size: 16px;
   padding-right: 10px;
-  color: #bcb3aa;
+}
+
+.icon {
+  width: 20px;
+}
+
+.profile-nav ul>li>a:hover .icon,
+.profile-nav ul>li>a:focus .icon,
+.profile-nav ul li.active .icon {
+  stroke: #00bc7e;
+}
+
+h1 {
+  margin-top: 10px;
 }

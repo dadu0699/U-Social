@@ -1,17 +1,199 @@
 @import url(//fonts.googleapis.com/css?family=Lato:400|Inconsolata);
 
 * {
-  /* scrollbar-color: #0389c9 #edf7fb; */
+  color: #bec6cf;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  scrollbar-color: #00BC7E transparent;
   scrollbar-width: thin;
+  text-decoration: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
 
+html,
 body {
-  font-family: Lato, "Helvetica Neue", Arial, Verdana, Tahoma, "Lucida Sans", FreeSans, "Lucida Sans Unicode", "Luxi Sans", sans-serif;
-  background: #e9eaed;
+  background: #131414;
+  color: #bec6cf;
+  min-height: 100%;
   overflow-x: hidden;
+  position: relative;
+}
+
+.additional-link,
+.additional-link:hover {
+  color: #00bc7e;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ------------------------------- */
+.icon:hover {
+  cursor: pointer;
+  stroke: #00bc7e;
+}
+
+/* ------------------------------- */
+.error-message {
+  font-size: 14;
+  color: #fd397a;
+  padding-top: 5px;
+  display: block;
+  text-align: left;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 10px 32px;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+  white-space: nowrap;
+  transition: 150ms;
+  background: transparent;
+}
+
+.button .text-label {
+  transition: 150ms;
+  font-size: 15;
+  font-weight: 800;
+  line-height: 0;
+}
+
+.button .icon {
+  margin-left: 12px;
+  font-size: 15;
+}
+
+.button.solid {
+  background: #00bc7e;
+  border: 2px solid #00bc7e;
+}
+
+.button.solid .text-label {
+  color: white;
+}
+
+.button.outline {
+  border: 2px solid #1b2539;
+}
+
+.button.outline .text-label {
+  color: #1b2539;
+}
+
+.button.outline .icon path {
+  fill: #00bc7e;
+}
+
+.button.outline:hover {
+  border-color: #00bc7e;
+}
+
+.button.outline:hover .text-label {
+  color: #00bc7e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .button.outline {
+    background: #131414;
+    border-color: #7d858c;
+  }
+
+  .button.outline .text-label {
+    color: #7d858c;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .button {
+    margin-top: 25px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ------------------------------- */
+textarea {
+  width: 100%;
+}
+
+textarea,
+input[type="password"],
+input[type="text"],
+input[type="email"] {
+  appearance: none;
+  background: #1e2024;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  color: #bec6cf;
+  font-size: 16;
+  font-weight: 500;
+  outline: 0;
+  padding: 13px 20px;
+  transition: 0.15s all ease;
+  width: 100%;
+}
+
+textarea.is-error,
+input[type="password"].is-error,
+input[type="text"].is-error,
+input[type="email"].is-error {
+  border-color: #fd397a;
+  box-shadow: 0 0 7px rgba(253, 57, 122, 0.3);
+}
+
+textarea::placeholder,
+input[type="password"]::placeholder,
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+  color: #7d858c;
+  font-size: 16;
+}
+
+textarea:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus {
+  background: #1e2024;
+  border-color: #00bc7e;
+  box-shadow: 0 0 7px rgba(0, 188, 126, 0.3);
+  color: #bec6cf;
+}
+
+textarea[disabled],
+input[type="password"][disabled],
+input[type="text"][disabled],
+input[type="email"][disabled] {
+  color: rgba(125, 133, 140, 15);
+  cursor: not-allowed;
+}
+
+@media only screen and (max-width: 960px) {
+
+  textarea,
+  input[type="password"],
+  input[type="text"],
+  input[type="email"] {
+    padding: 14px 20px;
+  }
 }

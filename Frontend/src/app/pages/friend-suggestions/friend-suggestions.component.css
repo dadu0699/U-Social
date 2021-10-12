@@ -1,27 +1,28 @@
-.contact-box {
-  background-color: #ffffff;
-  border: 1px solid #e7eaec;
+/* .contact-box {
+  background-color: #151617;
+  border: 1px solid #151617;
   padding: 20px;
   margin-bottom: 20px;
-}
+} */
 
-.contact-box>a {
-  color: inherit;
+h3 strong,
+.font-bold {
+  color: #00bc7e !important;
 }
 
 .contact-box.center-version {
-  border: 1px solid #e7eaec;
+  border: 1px solid #151617;
   padding: 0;
 }
 
-.contact-box.center-version>a {
+.contact-box.center-version>.contact-box-header {
   display: block;
-  background-color: #ffffff;
+  background-color: #151617;
   padding: 20px;
   text-align: center;
 }
 
-.contact-box.center-version>a img {
+.contact-box.center-version>.contact-box-header img {
   width: 80px;
   height: 80px;
   margin-top: 10px;
@@ -34,7 +35,7 @@
 
 .contact-box .contact-box-footer {
   text-align: center;
-  background-color: #ffffff;
-  border-top: 1px solid #e7eaec;
+  background-color: #151617;
+  border-top: 1px solid #00bc7e;
   padding: 15px 20px;
 }

@@ -15,7 +15,7 @@
         <ng-template ngFor let-link [ngForOf]="links">
           <li>
             <a class="flex-sm-fill nav-link" [routerLink]="link.route" routerLinkActive="router-link-active">
-              <i-feather name="{{link.icon}}" style="width: 20px;"></i-feather>
+              <i-feather class="icon" name="{{link.icon}}"></i-feather>
               &nbsp;
               {{link.title}}
             </a>

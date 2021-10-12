@@ -5,9 +5,7 @@
       <div class="card">
         <div class="card-body">
           <div class="center">
-            <h4 class="m-b-0">
-              <span class="icon-text">Welcome Back!</span>
-            </h4>
+            <h4 class="m-b-0"> Welcome Back! </h4>
             <p class="text-muted">Please type your credentials to log in</p>
           </div>
 
@@ -25,12 +23,14 @@
             <div class="mb-3 form-check">
               <p class="center text-muted">
                 Don’t have an account?
-                <a (click)="alternateLog()">Register account.</a>
+                <a class="additional-link" (click)="alternateLog()">Register account.</a>
               </p>
             </div>
 
             <div class="center">
-              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button type="submit" class="button outline">
+                <span class="text-label">Sign in</span>
+              </button>
             </div>
           </form>
 
@@ -43,9 +43,7 @@
       <div class="card">
         <div class="card-body">
           <div class="center">
-            <h4 class="m-b-0">
-              <span class="icon-text">Create New Account</span>
-            </h4>
+            <h4 class="m-b-0"> Create New Account </h4>
             <p class="text-muted">Please fill registration to create account</p>
           </div>
 
@@ -66,21 +64,24 @@
             </div>
 
             <div class="input-group mb-3">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Create password">
-              <span>&nbsp;</span>
-              <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirm password">
+              <input type="password" class="form-control password-right" id="inputPassword"
+                placeholder="Create password">
+              <input type="password" class="form-control password-left" id="inputPasswordConfirm"
+                placeholder="Confirm password">
               <!-- <div class=" form-text">text</div> -->
             </div>
 
             <div class="mb-3 form-check">
               <p class="center text-muted">
                 Do you have an account?
-                <a (click)="alternateLog()">Log In.</a>
+                <a class="additional-link" (click)="alternateLog()">Log In.</a>
               </p>
             </div>
 
             <div class="center">
-              <button type="submit" class="btn btn-primary">Sign up</button>
+              <button type="submit" class="button outline">
+                <span class="text-label">Sign up</span>
+              </button>
             </div>
           </form>
 

@@ -1,32 +1,27 @@
 <!-- center posts -->
-<div class="col-md-12" style="height: calc(100vh - 48px); background-color: #f5f5f5;">
+<div class="col-md-12" style="height: calc(100vh - 38px); background-color: #151617;">
   <div class="row">
 
     <div class="col-md-3 group">
-      <a class="list-group-item" style="cursor: pointer;">
+      <a class="list-group-item">
         <div class="list-group-item-heading">chatT.nombre chatT.apellido </div>
         <small class="list-group-item-text" style="color: #838e95;"> BOT </small>
       </a>
     </div>
 
-    <div class="col-md-9">
-      <div class="data-chat">
+    <div class="col-md-9" style="border-left: 1px solid #1e2024;">
+      <div class="data-chat animate__animated animate__fadeInUp">
         <ul class="chat-thread">
 
-          <li class="transmitter">msg.contenido</li>
-          <li class="sender">msg.contenido</li>
+          <li class="transmitter animate__animated animate__fadeInBottomLeft">msg.contenido</li>
+          <li class="sender animate__animated animate__fadeInBottomRight">msg.contenido</li>
 
         </ul>
       </div>
 
-      <div class="container form-group" style="padding-top: 1vh;">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Escribe un mensaje" name="Contenido">
-          <div class="input-group-append">
-            <span class="input-group-text" type="button">
-              <i-feather name="send"></i-feather>
-            </span>
-          </div>
+      <div class="container form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Press enter to send" name="Contenido">
         </div>
       </div>
     </div>
