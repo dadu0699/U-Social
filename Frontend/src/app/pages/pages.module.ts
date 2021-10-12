@@ -17,6 +17,7 @@ import { ChatComponent } from './chat/chat.component';
 import { FeedComponent } from './feed/feed.component';
 import { FriendRequestsComponent } from './friend-requests/friend-requests.component';
 import { FriendSuggestionsComponent } from './friend-suggestions/friend-suggestions.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const icons = {
   Send,
@@ -29,6 +30,7 @@ const icons = {
     FeedComponent,
     FriendRequestsComponent,
     FriendSuggestionsComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

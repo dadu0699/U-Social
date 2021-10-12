@@ -8,6 +8,7 @@ import { ChatComponent } from './chat/chat.component';
 import { FeedComponent } from './feed/feed.component';
 import { FriendSuggestionsComponent } from './friend-suggestions/friend-suggestions.component';
 import { FriendRequestsComponent } from './friend-requests/friend-requests.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'feed', component: FeedComponent },
       { path: 'friend-requests', component: FriendRequestsComponent },
       { path: 'friend-suggestions', component: FriendSuggestionsComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: '', redirectTo: 'feed', pathMatch: 'full' },
     ],
   }
