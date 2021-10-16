@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  database:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    restart: on-failure
+    # volumes:
+    #   - db_data:/var/lib/mysql
+    environment:
+      # MYSQL_USER: g38
+      # MYSQL_PASSWORD: pg38
+      MYSQL_ROOT_PASSWORD: rootG38
