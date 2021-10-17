@@ -102,7 +102,7 @@ CREATE PROCEDURE sp_addMessage (
 	IN _friend INT
 )
 BEGIN
-  SET @chatID = (SELECT chatID FROM Chat WHERE me = _me AND friend = _friend);
+  SET @chatID = (SELECT chatID FROM Chat WHERE transmitter = _me AND receiver = _friend);
   
   INSERT INTO Message (content, currentDate, chatID) 
     VALUES (_content, CURRENT_DATE(), @chatID);
