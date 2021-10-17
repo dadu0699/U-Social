@@ -90,8 +90,13 @@ const update = async (req, res) => {
   }).toString();
 
   try {
-    const { key } = await s3.itemUpload(req.body['nickname'], req.body['item']);
-    req.body['picture'] = key;
+    if (req.body['item'] !== undefined) {
+      const { key } = await s3.itemUpload(
+        req.body['nickname'],
+        req.body['item']
+      );
+      req.body['picture'] = key;
+    }
 
     const data = await cognito.updateUser(
       req.body['nickname'],
@@ -109,9 +114,7 @@ const update = async (req, res) => {
   }
 };
 
-const attributes = (body) => {
-  const { email, name, picture, bot } = body;
-
+const attributes = ({ email, name, picture, bot }) => {
   return [
     { name: 'email', value: email },
     { name: 'name', value: name },
