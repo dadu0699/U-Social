@@ -36,10 +36,10 @@ const get = (params, callback) => {
 };
 
 const update = (params, callback) => {
-  const user = [params.picture, params.nickname];
+  const user = [params.picture, params.bot, params.nickname];
 
   const query = `
-    UPDATE User SET picture = ? WHERE nickname = ?
+    UPDATE User SET picture = ?, bot = ? WHERE nickname = ?
   `;
 
   return execute(query, user, callback);

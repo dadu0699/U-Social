@@ -34,7 +34,7 @@ const signUp = async (req, res) => {
 
     userModel.signUp(req.body, (err, results) => {
       if (err) return response(res, 400, err);
-      response(res, 200, results['insertId']);
+      response(res, 200, { ...req.body, userID: results['insertId'] });
     });
   } catch (error) {
     response(res, 500, error);
