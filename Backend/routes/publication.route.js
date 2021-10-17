@@ -10,4 +10,6 @@ router
 
 router.route('/translate').post(publicationController.translate);
 
+router.route('/tags').get(publicationController.getTags);
+
 module.exports = router;

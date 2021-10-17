@@ -50,4 +50,22 @@ const getPublications = (params, callback) => {
   return execute(query, publication, callback);
 };
 
-module.exports = { createPublication, publicationTag, getPublications };
+const getPublicationTags = (params, callback) => {
+  const publication = [params.publicationID];
+
+  const query = `
+    SELECT Hashtag.content AS 'tag' FROM PublicationTag
+    INNER JOIN Publication ON (Publication.publicationID = PublicationTag.publicationID)
+    INNER JOIN Hashtag ON (PublicationTag.HashtagID = Hashtag.HashtagID)
+    WHERE Publication.publicationID = ?
+  `;
+
+  return execute(query, publication, callback);
+};
+
+module.exports = {
+  createPublication,
+  publicationTag,
+  getPublications,
+  getPublicationTags,
+};

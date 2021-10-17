@@ -60,8 +60,15 @@ const translate = async (req, res) => {
   }
 };
 
+const getTags = (req, res) => {
+  publicationModel.getPublicationTags(req.query, (err, results) => {
+    if (err) return response(res, 500, err);
+    response(res, 200, results);
+  });
+};
+
 const response = (res, code, data) => {
   res.status(code).send({ code, data });
 };
 
-module.exports = { create, getPublications, translate };
+module.exports = { create, getPublications, translate, getTags };
