@@ -79,16 +79,18 @@ BEGIN
 END$$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS sp_addChat;
+DROP PROCEDURE IF EXISTS sp_acceptFriendRequest;
 DELIMITER $$
-CREATE PROCEDURE sp_addChat (
+CREATE PROCEDURE sp_acceptFriendRequest (
   IN _me INT,
-	IN _friend INT
+  IN _friendshipID INT
 )
 BEGIN
-  INSERT INTO Friendship (me, friend) VALUES (_me, _friend);
-  INSERT INTO Chat (transmitter, receiver) VALUES (_me, _friend);
-  INSERT INTO Chat (transmitter, receiver) VALUES (_friend, _me);
+  UPDATE Friendship SET accepted = '1' WHERE friendshipID = _friendshipID;
+  SET @friend = (SELECT me FROM Friendship WHERE friendshipID = _friendshipID);
+  INSERT INTO Friendship (me, friend, accepted) VALUES (_me, @friend, '1');
+  INSERT INTO Chat (transmitter, receiver) VALUES (_me, @friend);
+  INSERT INTO Chat (transmitter, receiver) VALUES (@friend, _me);
 END$$
 DELIMITER ;
 
