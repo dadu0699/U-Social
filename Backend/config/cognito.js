@@ -6,7 +6,7 @@ const {
 } = require('amazon-cognito-identity-js');
 
 const { delay } = require('../utils/shared');
-const delayTime = 750;
+const delayTime = 1000;
 
 require('dotenv').config();
 const { COGNITO_USER_POOL_ID, COGNITO_CLIENT_ID } = process.env;
