@@ -31,4 +31,14 @@ const compareFaces = async (base64Image, imageS3) => {
   return await client.compareFaces(params).promise();
 };
 
-module.exports = { compareFaces };
+const detectLabels = async (base64Image) => {
+  const params = {
+    Image: {
+      Bytes: Buffer.from(base64Image, 'base64'),
+    },
+  };
+
+  return await client.detectLabels(params).promise();
+};
+
+module.exports = { compareFaces, detectLabels };
