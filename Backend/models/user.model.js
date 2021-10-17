@@ -42,7 +42,7 @@ const update = (params, callback) => {
     UPDATE User SET picture = ? WHERE nickname = ?
   `;
 
-  return this.executeQuery(query, user, callback);
+  return execute(query, user, callback);
 };
 
 module.exports = { signUp, signInFaceID, get, update };

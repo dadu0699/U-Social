@@ -4,7 +4,7 @@ const s3 = require('../config/s3');
 const userModel = require('../models/user.model');
 
 const { delay } = require('../utils/shared');
-const delayTime = 750;
+const delayTime = 500;
 
 require('dotenv').config();
 const CryptoJS = require('crypto-js');
@@ -34,10 +34,10 @@ const signUp = async (req, res) => {
 
     userModel.signUp(req.body, (err, results) => {
       if (err) return response(res, 400, err);
-      return response(res, 200, results['insertId']);
+      response(res, 200, results['insertId']);
     });
   } catch (error) {
-    return response(res, 500, error);
+    response(res, 500, error);
   }
 };
 
@@ -67,7 +67,7 @@ const signIn = async (req, res) => {
         return response(res, 400, 'Not Authorized');
       }
     } catch (error) {
-      return response(res, 500, error);
+      response(res, 500, error);
     }
   }
 
@@ -80,8 +80,33 @@ const signIn = async (req, res) => {
 
   userModel.get(req.body, (err, results) => {
     if (err) return response(res, 400, err);
-    return response(res, 200, { ...data[1], ...results[0] });
+    response(res, 200, { ...data[1], ...results[0] });
   });
+};
+
+const update = async (req, res) => {
+  req.body['password'] = CryptoJS.AES.encrypt(req.body['password'], key, {
+    iv,
+  }).toString();
+
+  try {
+    const { key } = await s3.itemUpload(req.body['nickname'], req.body['item']);
+    req.body['picture'] = key;
+
+    const data = await cognito.updateUser(
+      req.body['nickname'],
+      req.body['password'],
+      attributes(req.body)
+    );
+    if (data[0]) return response(res, 400, data[0]);
+
+    userModel.update(req.body, (err, results) => {
+      if (err) return response(res, 400, err);
+      response(res, 200, results);
+    });
+  } catch (error) {
+    response(res, 500, error);
+  }
 };
 
 const attributes = (body) => {
@@ -99,4 +124,4 @@ const response = (res, code, data) => {
   res.status(code).send({ code, data });
 };
 
-module.exports = { signUp, signIn };
+module.exports = { signUp, signIn, update };
