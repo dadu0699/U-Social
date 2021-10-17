@@ -18,6 +18,7 @@ app.use('/', require('./routes/index.route'));
 app.use('/user', require('./routes/user.route'));
 app.use('/publication', require('./routes/publication.route'));
 app.use('/friendship', require('./routes/friendship.route'));
+app.use('/chat', require('./routes/chat.route'));
 
 // Port assignment
 const server = app.listen(PORT, () => {
