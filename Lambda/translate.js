@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   const params = {
     SourceLanguageCode: "auto",
     TargetLanguageCode: "es",
-    Text: event.text,
+    Text: event.text || " ",
   };
 
   return await client.translateText(params).promise();
