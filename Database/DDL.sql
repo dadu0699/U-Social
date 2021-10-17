@@ -5,7 +5,8 @@ USE USocial;
 CREATE TABLE User(
   userID INT NOT NULL AUTO_INCREMENT,
   nickname VARCHAR(100) NOT NULL UNIQUE,
-  picture VARCHAR(100) NOT NULL,
+  picture VARCHAR(255) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   PRIMARY KEY (userID)
 );
 
@@ -61,4 +62,4 @@ CREATE TABLE PublicationTag(
     FOREIGN KEY (hashtagID) REFERENCES Hashtag (hashtagID)
 );
 
--- ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY MYSQL_ROOT_PASSWORD;
+-- ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'rootG38';
