@@ -7,6 +7,7 @@ CREATE TABLE User(
   nickname VARCHAR(100) NOT NULL UNIQUE,
   picture VARCHAR(255) NOT NULL,
   password VARCHAR(100) NOT NULL,
+  bot BOOLEAN NOT NULL DEFAULT False,
   PRIMARY KEY (userID)
 );
 
@@ -30,36 +31,80 @@ CREATE TABLE Chat(
 );
 
 CREATE TABLE Message(
-    messageID INT NOT NULL AUTO_INCREMENT,
-    content VARCHAR(255) NOT NULL,
-    currentDate DATE NOT NULL,
-    chatID INT NOT NULL,
-    PRIMARY KEY (messageID),
-    FOREIGN KEY (chatID) REFERENCES Chat (chatID)
+  messageID INT NOT NULL AUTO_INCREMENT,
+  content VARCHAR(255) NOT NULL,
+  currentDate DATE NOT NULL,
+  chatID INT NOT NULL,
+  PRIMARY KEY (messageID),
+  FOREIGN KEY (chatID) REFERENCES Chat (chatID)
 );
 
 CREATE TABLE Publication(
-    publicationID INT NOT NULL AUTO_INCREMENT,
-    content VARCHAR(255) NOT NULL,
-    photo VARCHAR(255) NOT NULL,
-    userID INT NOT NULL,
-    PRIMARY KEY (publicationID),
-    FOREIGN KEY (userID) REFERENCES User (userID)
+  publicationID INT NOT NULL AUTO_INCREMENT,
+  content VARCHAR(255) NULL,
+  photo VARCHAR(255) NOT NULL,
+  userID INT NOT NULL,
+  PRIMARY KEY (publicationID),
+  FOREIGN KEY (userID) REFERENCES User (userID)
 );
 
 CREATE TABLE Hashtag(
-    hashtagID INT NOT NULL AUTO_INCREMENT,
-    content VARCHAR(255) NOT NULL,
-    PRIMARY KEY (hashtagID)
+  hashtagID INT NOT NULL AUTO_INCREMENT,
+  content VARCHAR(255) NOT NULL,
+  PRIMARY KEY (hashtagID)
 );
 
 CREATE TABLE PublicationTag(
-    publicationTagID INT NOT NULL AUTO_INCREMENT,
-    publicationID INT NOT NULL,
-    hashtagID INT NOT NULL,
-    PRIMARY KEY (publicationTagID),
-    FOREIGN KEY (publicationID) REFERENCES Publication (publicationID),
-    FOREIGN KEY (hashtagID) REFERENCES Hashtag (hashtagID)
+  publicationTagID INT NOT NULL AUTO_INCREMENT,
+  publicationID INT NOT NULL,
+  hashtagID INT NOT NULL,
+  PRIMARY KEY (publicationTagID),
+  FOREIGN KEY (publicationID) REFERENCES Publication (publicationID),
+  FOREIGN KEY (hashtagID) REFERENCES Hashtag (hashtagID)
 );
+
+DROP PROCEDURE IF EXISTS sp_addTagToPost;
+DELIMITER $$
+CREATE PROCEDURE sp_addTagToPost (
+  IN _publicationID INT,
+	IN _tag VARCHAR(255)
+)
+BEGIN
+	IF NOT EXISTS (SELECT * FROM Hashtag WHERE content = _tag) THEN
+		INSERT INTO Hashtag (content) VALUES (_tag);
+	END IF;
+
+  SET @hashtagID = (SELECT hashtagID FROM Hashtag WHERE content = _tag);
+  INSERT INTO PublicationTag (publicationID, hashtagID) VALUES ( _publicationID, @hashtagID);
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS sp_addChat;
+DELIMITER $$
+CREATE PROCEDURE sp_addChat (
+  IN _me INT,
+	IN _friend INT
+)
+BEGIN
+  INSERT INTO Friendship (me, friend) VALUES (_me, _friend);
+  INSERT INTO Chat (transmitter, receiver) VALUES (_me, _friend);
+  INSERT INTO Chat (transmitter, receiver) VALUES (_friend, _me);
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS sp_addMessage;
+DELIMITER $$
+CREATE PROCEDURE sp_addMessage (
+  IN _content VARCHAR(255),
+  IN _me INT,
+	IN _friend INT
+)
+BEGIN
+  SET @chatID = (SELECT chatID FROM Chat WHERE me = _me AND friend = _friend);
+  
+  INSERT INTO Message (content, currentDate, chatID) 
+    VALUES (_content, CURRENT_DATE(), @chatID);
+END$$
+DELIMITER ;
 
 -- ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'rootG38';
