@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FeatherModule } from 'angular-feather';
-import { Loader } from 'angular-feather/icons';
+import { ChevronRight, Loader } from 'angular-feather/icons';
 
 import { AuthRoutingModule } from './auth-routing.module';
 
 import { LoginComponent } from './login/login.component';
 
-const icons = { Loader };
+const icons = { ChevronRight, Loader };
 
 @NgModule({
   declarations: [LoginComponent],

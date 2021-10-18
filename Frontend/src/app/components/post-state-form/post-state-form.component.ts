@@ -87,7 +87,7 @@ export class PostStateFormComponent implements OnInit {
         const mimetype = this.file.name.split('?')[0].split('.').pop();
         if (
           mimetype === undefined ||
-          (mimetype && !publication.imageTypes().includes(mimetype))
+          (mimetype && !publication.item.imageTypes().includes(mimetype))
         ) {
           this.errorMessage.file = 'Unsupported file type';
           this.saving = false;

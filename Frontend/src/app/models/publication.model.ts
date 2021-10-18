@@ -18,8 +18,4 @@ export class Publication {
     this.tags = [];
     this.item = new Item();
   }
-
-  public imageTypes(): string[] {
-    return ['jpg', 'jpeg', 'png'];
-  }
 }

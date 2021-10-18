@@ -47,7 +47,7 @@
     </div>
 
 
-    <div class="card-group animate__animated animate__flipInX" *ngIf="!login">
+    <div class="card-group animate__animated animate__flipInX" *ngIf="!login && !photoForm">
       <div class="card">
         <div class="card-body">
           <div class="center">
@@ -57,25 +57,29 @@
 
           <form>
             <div class="mb-3">
-              <input type="text" class="form-control" id="inputNickname" placeholder="Nickname">
+              <input type="text" class="form-control" id="inputNicknameR" placeholder="Nickname" name="nicknameR"
+                #nicknameR="ngModel" [(ngModel)]="userRegister.nickname">
               <!-- <div class="form-text">text</div> -->
             </div>
 
             <div class="mb-3">
-              <input type="text" class="form-control" id="inputFullName" placeholder="Full Name">
+              <input type="text" class="form-control" id="inputFullName" placeholder="Full Name" name="nameR"
+                #nameR="ngModel" [(ngModel)]="userRegister.name">
               <!-- <div class="form-text">text</div> -->
             </div>
 
             <div class="mb-3">
-              <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+              <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="emailR"
+                #emailR="ngModel" [(ngModel)]="userRegister.email">
               <!-- <div class="form-text">text</div> -->
             </div>
 
             <div class="input-group mb-3">
               <input type="password" class="form-control password-right" id="inputPassword"
-                placeholder="Create password">
+                placeholder="Create password" name="passwR" #passwR="ngModel" [(ngModel)]="userRegister.password">
               <input type="password" class="form-control password-left" id="inputPasswordConfirm"
-                placeholder="Confirm password">
+                placeholder="Confirm password" name="passwCR" #passwCR="ngModel"
+                [(ngModel)]="userRegister.confirmPassword">
               <!-- <div class=" form-text">text</div> -->
             </div>
 
@@ -87,12 +91,50 @@
             </div>
 
             <div class="center">
-              <button type="submit" class="button outline">
-                <span class="text-label">Sign up</span>
+              <button type="submit" class="button outline" (click)="photoForm = true">
+                <span class="text-label">Next Step</span>
+                <i-feather name="chevron-right"></i-feather>
               </button>
             </div>
           </form>
 
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card-group animate__animated animate__flipInX" *ngIf="!login && photoForm">
+      <div class="card">
+        <div class="card-body">
+          <div class="center">
+            <h4 class="m-b-0"> Upload your photo </h4>
+            <p class="text-muted">From your device</p>
+          </div>
+
+          <div class="mb-3 form-check center">
+            <div class="dropzone" [ngClass]="{ 'is-error': errorMessage.photo }">
+              <input ref="file" type="file" class="dummy" name="name" (change)="onPhotoSelected($event)" #photoInput />
+              <img ref="image" class="user-avatar image-preview" *ngIf="imagePreview" (click)="photoInput.click()"
+                [src]="photoSelected || imagePreview" />
+            </div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <p class="center text-muted">
+              Do you have an account?
+              <a class="additional-link" (click)="alternateLog()">Log In.</a>
+            </p>
+          </div>
+
+          <div class="center">
+            <button type="submit" class="button outline" (click)="signup()">
+              <span class="text-label">Sign in</span>
+
+              <span class="icon" *ngIf="loading">
+                <i-feather class="sync-alt" name="loader"></i-feather>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

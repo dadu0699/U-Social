@@ -18,5 +18,6 @@ export class User {
     this.name = '';
     this.bot = 0;
     this.faceID = false;
+    this.item = new Item();
   }
 }

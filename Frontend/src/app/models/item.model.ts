@@ -8,4 +8,8 @@ export class Item {
     this.mimetype = 'png';
     this.base64 = '';
   }
+
+  public imageTypes(): string[] {
+    return ['jpg', 'jpeg', 'png'];
+  }
 }

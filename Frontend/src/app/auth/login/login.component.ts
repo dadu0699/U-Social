@@ -11,13 +11,20 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   public login: boolean;
+  public photoForm: boolean;
   public errorMessage: {
     nickname?: string;
     password?: string;
+    photo?: string;
   };
 
   public loading: boolean;
   public user: User;
+  public userRegister: User;
+
+  public photo!: File;
+  public photoSelected!: string | ArrayBuffer | null;
+  public imagePreview: string;
 
   constructor(private _router: Router, private _userService: UserService) {
     if (this._userService.getUser() !== undefined) {
@@ -25,16 +32,21 @@ export class LoginComponent implements OnInit {
     }
 
     this.login = true;
+    this.photoForm = false;
     this.errorMessage = {};
 
     this.loading = false;
     this.user = new User();
+    this.userRegister = new User();
+    this.imagePreview =
+      'https://johannesippen.com/img/blog/humans-not-users/header.jpg';
   }
 
   ngOnInit() {}
 
   public alternateLog() {
     this.login = !this.login;
+    this.photoForm = false;
   }
 
   public async signin(): Promise<void> {
@@ -66,5 +78,60 @@ export class LoginComponent implements OnInit {
     this.user.picture = user.picture;
     this.user.userID = user.userID;
     this.user.item = undefined;
+  }
+
+  public onPhotoSelected(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      this.photo = <File>event.target.files[0];
+
+      // Image Preview and base64
+      const reader = new FileReader();
+      reader.readAsDataURL(this.photo);
+      reader.onload = () => {
+        this.photoSelected = reader.result;
+
+        if (typeof reader.result === 'string') {
+          if (this.userRegister.item) {
+            this.userRegister.item.base64 =
+              reader.result.split('?')[0].split('base64,').pop() || '';
+          }
+        }
+      };
+    }
+  }
+
+  public async signup(): Promise<void> {
+    if (!this.photoSelected || !this.userRegister.item) {
+      // this.errorMessage.photo = 'You need a profile photo';
+      this.errorMessage.photo = 'Your photo is being processed';
+      return;
+    }
+
+    this.errorMessage = {};
+    this.loading = true;
+
+    try {
+      const mimetype = this.photo.name.split('?')[0].split('.').pop();
+      if (
+        mimetype === undefined ||
+        !this.userRegister.item.imageTypes().includes(mimetype)
+      ) {
+        this.errorMessage.photo = 'Unsupported file type';
+        this.loading = false;
+        return;
+      }
+      this.userRegister.item.mimetype = mimetype;
+
+      const response = await this._userService.signUp(this.userRegister);
+      if (response['code'] === 200) {
+        this.alternateLog();
+        this.user = new User();
+        this.userRegister = new User();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    this.loading = false;
   }
 }
