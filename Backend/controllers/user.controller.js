@@ -4,7 +4,7 @@ const s3 = require('../config/s3');
 const userModel = require('../models/user.model');
 
 const { delay } = require('../utils/shared');
-const delayTime = 500;
+const delayTime = 1000;
 
 require('dotenv').config();
 const CryptoJS = require('crypto-js');

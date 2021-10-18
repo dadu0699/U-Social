@@ -27,7 +27,8 @@ const getPublications = (params, callback) => {
   const publication = [params.userID, params.userID];
 
   const query = `
-    (
+    SELECT * FROM
+    ((
       SELECT publicationID, content, photo,
         Publication.userID, nickname, picture
       FROM Friendship
@@ -44,7 +45,8 @@ const getPublications = (params, callback) => {
       FROM Publication
       INNER JOIN User ON (User.userID = Publication.userID)
       WHERE Publication.userID = ?
-    )
+    )) Publication
+    ORDER BY publicationID DESC
   `;
 
   return execute(query, publication, callback);
