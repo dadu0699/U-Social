@@ -9,15 +9,19 @@
             <p class="text-muted">Please type your credentials to log in</p>
           </div>
 
-          <form>
+          <form id="loginForm" autocomplete="off" #loginForm="ngForm" (ngSubmit)="signin()">
             <div class="mb-3">
-              <input type="text" class="form-control" id="inputNickname" placeholder="Nickname">
-              <!-- <div class="form-text">text</div> -->
+              <input type="text" class="form-control" id="inputNickname" placeholder="Nickname"
+                [ngClass]="{'is-error': errorMessage.nickname}" name="nickname" #nickname="ngModel"
+                [(ngModel)]="user.nickname">
+              <span class="error-message" *ngIf="errorMessage.nickname">{{ errorMessage.nickname }}</span>
             </div>
 
             <div class="mb-3">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-              <!-- <div class=" form-text">text</div> -->
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password"
+                [ngClass]="{'is-error': errorMessage.password}" name="passw" #passw="ngModel"
+                [(ngModel)]="user.password">
+              <span class="error-message" *ngIf="errorMessage.password">{{ errorMessage.password }}</span>
             </div>
 
             <div class="mb-3 form-check">
@@ -30,6 +34,10 @@
             <div class="center">
               <button type="submit" class="button outline">
                 <span class="text-label">Sign in</span>
+
+                <span class="icon" *ngIf="loading">
+                  <i-feather class="sync-alt" name="loader"></i-feather>
+                </span>
               </button>
             </div>
           </form>

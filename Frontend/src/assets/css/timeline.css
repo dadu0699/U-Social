@@ -8,8 +8,8 @@
 }
 
 .p-text-area:focus {
-  border: none;
-  box-shadow: none;
+  border-color: transparent;
+  box-shadow: 0 0 transparent;
 }
 
 .box-widget {
@@ -35,6 +35,13 @@
   display: block;
   padding: 10px;
   position: relative;
+}
+
+.box-body img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 75vh;
 }
 
 .user-block img {

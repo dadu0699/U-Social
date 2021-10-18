@@ -197,3 +197,17 @@ input[type="email"][disabled] {
     padding: 14px 20px;
   }
 }
+
+.sync-alt {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

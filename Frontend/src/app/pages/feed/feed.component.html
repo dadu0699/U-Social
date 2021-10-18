@@ -2,6 +2,16 @@
 <app-post-state-form></app-post-state-form>
 <!-- end post state form -->
 
+<!-- loader -->
+<app-loader *ngIf="loading"></app-loader>
+<!-- end loader -->
+
+<!-- search -->
+<app-search-bar *ngIf="!loading"></app-search-bar>
+<!-- end search -->
+
 <!--   posts -->
-<app-post></app-post>
+<ng-template ngFor let-publication [ngForOf]="publications | filter:search" *ngIf="!loading">
+  <app-post [publication]="publication"></app-post>
+</ng-template>
 <!--  end posts -->

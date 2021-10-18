@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FeatherModule } from 'angular-feather';
 import { Send } from 'angular-feather/icons';
 
@@ -38,9 +39,10 @@ const icons = {
     FormsModule,
     HttpClientModule,
     PagesRoutingModule,
+    Ng2SearchPipeModule,
     FeatherModule.pick(icons),
     ComponentsModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
 })
-export class PagesModule { }
+export class PagesModule {}

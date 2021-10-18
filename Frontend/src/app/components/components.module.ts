@@ -5,30 +5,48 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FeatherModule } from 'angular-feather';
-import { Home, Paperclip, Send, User, Users } from 'angular-feather/icons';
-
-import { LeftLinksComponent } from './left-links/left-links.component';
-import { PostComponent } from './post/post.component';
-import { PostStateFormComponent } from './post-state-form/post-state-form.component';
-
-const icons = {
+import {
+  Globe,
   Home,
   Paperclip,
+  Search,
   Send,
   User,
   Users,
+  X,
+} from 'angular-feather/icons';
+
+import { LeftLinksComponent } from './left-links/left-links.component';
+import { LoaderComponent } from './loader/loader.component';
+import { PostComponent } from './post/post.component';
+import { PostStateFormComponent } from './post-state-form/post-state-form.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+
+const icons = {
+  Globe,
+  Home,
+  Paperclip,
+  Search,
+  Send,
+  User,
+  Users,
+  X,
 };
 
 @NgModule({
   declarations: [
     LeftLinksComponent,
+    LoaderComponent,
     PostComponent,
     PostStateFormComponent,
+    SearchBarComponent,
   ],
   exports: [
     LeftLinksComponent,
+    LoaderComponent,
     PostComponent,
     PostStateFormComponent,
+    SearchBarComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +54,6 @@ const icons = {
     FormsModule,
     HttpClientModule,
     FeatherModule.pick(icons),
-  ]
+  ],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

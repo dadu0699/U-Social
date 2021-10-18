@@ -1,18 +1,25 @@
 <div class="box profile-info n-border-top">
-  <form>
-    <textarea class="input-lg p-text-area" placeholder="Whats in your mind today?" rows="3" maxlength="250"></textarea>
+  <form autocomplete="off" #postForm="ngForm">
+    <textarea class="input-lg p-text-area" placeholder="Whats in your mind today?" rows="3" maxlength="250"
+      id="inputContent" name="postCaption" [(ngModel)]="postCaption"></textarea>
+    <span class="error-message" *ngIf="errorMessage.file">{{ errorMessage.file }}</span>
+    <span class="success-message" *ngIf="errorMessage.success">{{ errorMessage.success }}</span>
   </form>
 
   <div class="box-footer box-form d-flex flex-row-reverse">
+
     <ul class="nav nav-pills">
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i-feather class="icon" name="paperclip"></i-feather>
+        <a class="nav-link">
+          <label label="file" class="button file-input">
+            <i-feather class="icon" name="paperclip"></i-feather>
+            <input [hidden]="true" id="file" type="file" name="files" (change)="onChange($event)">
+          </label>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" (click)="uploadFile()">
           <i-feather class="icon" name="send"></i-feather>
         </a>
       </li>

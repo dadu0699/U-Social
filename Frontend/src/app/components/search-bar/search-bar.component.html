@@ -1,0 +1,12 @@
+<div class="search-bar">
+  <div class="icon" *ngIf="!isQuery()">
+    <i-feather class="pointer" name="search"></i-feather>
+  </div>
+  <div class="icon" *ngIf="isQuery()" (click)="resetQuery()">
+    <i-feather class="pointer" name="x"></i-feather>
+  </div>
+
+  <input class="query" type="text" name="dataQuery" [placeholder]="placeholder" #dataQuery="ngModel" [(ngModel)]="data"
+    (ngModelChange)="dataChange($event)">
+
+</div>
