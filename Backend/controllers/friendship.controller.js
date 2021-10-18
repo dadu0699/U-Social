@@ -14,6 +14,13 @@ const suggestions = (req, res) => {
   });
 };
 
+const getRequests = (req, res) => {
+  friendshipModel.getRequests(req.query, (err, results) => {
+    if (err) return response(res, 500, err);
+    response(res, 200, results);
+  });
+};
+
 const toAccept = (req, res) => {
   friendshipModel.toAccept(req.body, (err, results) => {
     if (err) return response(res, 500, err);
@@ -25,4 +32,11 @@ const response = (res, code, data) => {
   res.status(code).send({ code, data });
 };
 
-module.exports = { create, suggestions, toAccept };
+const reject = (req, res) => {
+  friendshipModel.reject(req.body, (err, results) => {
+    if (err) return response(res, 500, err);
+    response(res, 200, results);
+  });
+};
+
+module.exports = { create, suggestions, getRequests, toAccept, reject };

@@ -8,6 +8,10 @@ router
   .get(friendshipController.suggestions)
   .post(friendshipController.create);
 
-router.route('/to-accept').post(friendshipController.toAccept);
+router
+  .route('/requests')
+  .get(friendshipController.getRequests)
+  .post(friendshipController.toAccept)
+  .delete(friendshipController.reject);
 
 module.exports = router;

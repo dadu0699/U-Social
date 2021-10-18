@@ -12,8 +12,8 @@ const create = (params, callback) => {
   return execute(query, friendship, callback);
 };
 
-const suggestions = (params, callback) => {
-  const friendship = [params.userID, params.userID];
+const suggestions = ({ userID }, callback) => {
+  const friendship = [userID, userID, userID];
 
   const query = `
     SELECT User.userID, nickname, picture
@@ -22,11 +22,26 @@ const suggestions = (params, callback) => {
       AND User.userID NOT IN (
         SELECT friend FROM Friendship
         WHERE me = ?
+      ) AND User.userID NOT IN (
+        SELECT me FROM Friendship
+        WHERE friend = ?
       )
-    GROUP BY User.userID;
   `;
 
   return execute(query, friendship, callback);
+};
+
+const getRequests = ({ userID }, callback) => {
+  const user = [userID];
+
+  const query = `
+    SELECT friendshipID, userID, nickname, picture
+    FROM User
+    INNER JOIN Friendship ON Friendship.me = User.userID
+    WHERE Friendship.accepted = 0 AND Friendship.friend = ?
+  `;
+
+  return execute(query, user, callback);
 };
 
 const toAccept = (params, callback) => {
@@ -37,4 +52,12 @@ const toAccept = (params, callback) => {
   return execute(query, friendship, callback);
 };
 
-module.exports = { create, suggestions, toAccept };
+const reject = (params, callback) => {
+  const friendship = [params.friendshipID];
+
+  const query = 'DELETE FROM Friendship WHERE friendshipID = ?';
+
+  return execute(query, friendship, callback);
+};
+
+module.exports = { create, suggestions, getRequests, toAccept, reject };

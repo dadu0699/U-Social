@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     nickname?: string;
     password?: string;
     photo?: string;
+    passwordR?: string;
   };
 
   public loading: boolean;
@@ -128,8 +129,16 @@ export class LoginComponent implements OnInit {
         this.user = new User();
         this.userRegister = new User();
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+
+      if (
+        error['error']['data'] == 'The password confirmation does not match'
+      ) {
+        this.errorMessage.passwordR =
+          'The password confirmation does not match';
+        this.photoForm = false;
+      }
     }
 
     this.loading = false;

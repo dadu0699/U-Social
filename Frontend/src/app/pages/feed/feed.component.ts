@@ -6,7 +6,7 @@ import { PublicationService } from 'src/app/services/publication.service';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css'],
+  styles: [],
 })
 export class FeedComponent implements OnInit {
   public publications: Publication[];
@@ -56,8 +56,8 @@ export class FeedComponent implements OnInit {
           });
         }
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
     this.loading = false;
   }

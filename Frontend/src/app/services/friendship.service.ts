@@ -29,8 +29,9 @@ export class FriendshipService {
     }
   }
 
-  public async create(userID: number, friendID: number): Promise<any> {
-    const json = JSON.stringify({ userID, friendID });
+  public async create(friendID: number): Promise<any> {
+    this.currentUser();
+    const json = JSON.stringify({ userID: this.user.userID, friendID });
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return await this._httpClient.post(this.url, json, { headers }).toPromise();
@@ -43,12 +44,31 @@ export class FriendshipService {
     return await this._httpClient.get(this.url, { params }).toPromise();
   }
 
-  public async toAccept(userID: number, friendshipID: number): Promise<any> {
-    const json = JSON.stringify({ userID, friendshipID });
+  public async getRequests(): Promise<any> {
+    this.currentUser();
+    const params = new HttpParams().set('userID', this.user.userID);
+
+    return await this._httpClient
+      .get(`${this.url}/requests`, { params })
+      .toPromise();
+  }
+
+  public async toAccept(friendshipID: number): Promise<any> {
+    this.currentUser();
+    const json = JSON.stringify({ userID: this.user.userID, friendshipID });
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return await this._httpClient
-      .post(`${this.url}/to-Accept`, json, { headers })
+      .post(`${this.url}/requests`, json, { headers })
+      .toPromise();
+  }
+
+  public async reject(friendshipID: number): Promise<any> {
+    const body = JSON.stringify({ friendshipID });
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return await this._httpClient
+      .delete(`${this.url}/requests`, { body, headers })
       .toPromise();
   }
 }

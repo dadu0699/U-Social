@@ -71,16 +71,16 @@
             <div class="mb-3">
               <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="emailR"
                 #emailR="ngModel" [(ngModel)]="userRegister.email">
-              <!-- <div class="form-text">text</div> -->
+              <span class="error-message" *ngIf="errorMessage.passwordR">{{ errorMessage.passwordR }}</span>
             </div>
 
             <div class="input-group mb-3">
-              <input type="password" class="form-control password-right" id="inputPassword"
-                placeholder="Create password" name="passwR" #passwR="ngModel" [(ngModel)]="userRegister.password">
-              <input type="password" class="form-control password-left" id="inputPasswordConfirm"
-                placeholder="Confirm password" name="passwCR" #passwCR="ngModel"
+              <input type="password" class="form-control password-right"
+                [ngClass]="{'is-error': errorMessage.passwordR}" id="inputPassword" placeholder="Create password"
+                name="passwR" #passwR="ngModel" [(ngModel)]="userRegister.password">
+              <input type="password" class="form-control password-left" [ngClass]="{'is-error': errorMessage.passwordR}"
+                id="inputPasswordConfirm" placeholder="Confirm password" name="passwCR" #passwCR="ngModel"
                 [(ngModel)]="userRegister.confirmPassword">
-              <!-- <div class=" form-text">text</div> -->
             </div>
 
             <div class="mb-3 form-check">
@@ -128,7 +128,7 @@
 
           <div class="center">
             <button type="submit" class="button outline" (click)="signup()">
-              <span class="text-label">Sign in</span>
+              <span class="text-label">Sign up</span>
 
               <span class="icon" *ngIf="loading">
                 <i-feather class="sync-alt" name="loader"></i-feather>
