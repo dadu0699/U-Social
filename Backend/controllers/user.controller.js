@@ -105,9 +105,9 @@ const update = async (req, res) => {
     );
     if (data[0]) return response(res, 400, data[0]);
 
-    userModel.update(req.body, (err, results) => {
+    userModel.update(req.body, (err, _results) => {
       if (err) return response(res, 400, err);
-      response(res, 200, results);
+      response(res, 200, req.body['picture']);
     });
   } catch (error) {
     response(res, 500, error);
