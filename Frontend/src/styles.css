@@ -16,6 +16,24 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  background: #131414;
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00BC7E;
+  /* border-radius: 1ex; */
+  box-shadow: #131414;
+  /* -webkit-border-radius: 1ex; */
+  -webkit-box-shadow: #131414;
+}
+
+::-webkit-scrollbar-corner {
+  background: #131414;
+}
+
 
 html,
 body {

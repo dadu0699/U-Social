@@ -40,7 +40,7 @@ button:focus {
 }
 
 .ms-msg {
-  height: calc(100vh - 206px);
+  height: 100%;
   width: 100%;
 }
 

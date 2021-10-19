@@ -3,27 +3,49 @@
   <div class="row">
 
     <div class="col-md-3 group">
-      <a class="list-group-item">
-        <div class="list-group-item-heading">chatT.nombre chatT.apellido </div>
-        <small class="list-group-item-text" style="color: #838e95;"> BOT </small>
-      </a>
+      <ng-template ngFor let-userChat [ngForOf]="chats">
+        <a class="list-group-item" (click)="getChat(userChat)">
+          <div class="list-group-item-heading">@{{userChat.nickname}} </div>
+          <small class="list-group-item-text" style="color: #838e95;" *ngIf="userChat.bot == 1"> BOT </small>
+        </a>
+      </ng-template>
     </div>
 
     <div class="col-md-9" style="border-left: 1px solid #1e2024;">
-      <div class="data-chat animate__animated animate__fadeInUp">
-        <ul class="chat-thread">
 
-          <li class="transmitter animate__animated animate__fadeInBottomLeft">msg.contenido</li>
-          <li class="sender animate__animated animate__fadeInBottomRight">msg.contenido</li>
+      <div *ngIf="chat; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <div class="data-chat animate__animated animate__fadeInUp">
+          <ul class="chat-thread">
 
-        </ul>
-      </div>
+            <ng-template ngFor let-msg [ngForOf]="chat.messages">
+              <div *ngIf="msg.transmitter == chat.userID; then thenBlockMSG else elseBlockMSG"></div>
+              <ng-template #thenBlockMSG>
+                <li class="transmitter animate__animated animate__fadeInBottomLeft">{{msg.content}}</li>
+              </ng-template>
 
-      <div class="container form-group">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Press enter to send" name="Contenido">
+              <ng-template #elseBlockMSG>
+                <li class="sender animate__animated animate__fadeInBottomRight">{{msg.content}}</li>
+              </ng-template>
+            </ng-template>
+
+          </ul>
         </div>
-      </div>
+
+        <div class="container form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Press enter to send" name="content"
+              [(ngModel)]="content" (keyup.enter)="sendMessage()">
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #elseBlock>
+        <div class="ms-msg d-flex justify-content-center align-items-center">
+          <h3 class="center">Bandeja de entrada</h3>
+        </div>
+      </ng-template>
+
     </div>
   </div>
 </div>
