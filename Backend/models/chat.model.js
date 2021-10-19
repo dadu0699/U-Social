@@ -4,6 +4,19 @@ const execute = (query, params, callback) => {
   mysqlConnection.query(query, params, (err, res) => callback(err, res));
 };
 
+const getChat = ({ userID }, callback) => {
+  const user = [userID];
+
+  const query = `
+    SELECT userID, nickname, picture, bot
+    FROM User
+    INNER JOIN Friendship ON (friend = userID)
+    WHERE me = ?
+  `;
+
+  return execute(query, user, callback);
+};
+
 const sendMessage = (params, callback) => {
   const message = [params.content, params.userID, params.friendID];
 
@@ -28,4 +41,4 @@ const getMessages = ({ userID, friendID }, callback) => {
   return execute(query, users, callback);
 };
 
-module.exports = { sendMessage, getMessages };
+module.exports = { getChat, sendMessage, getMessages };
