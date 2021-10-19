@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { defaultPicture } from 'src/app/utils/shared-functions';
 
 @Component({
   selector: 'app-login',
@@ -39,8 +40,7 @@ export class LoginComponent implements OnInit {
     this.loading = false;
     this.user = new User();
     this.userRegister = new User();
-    this.imagePreview =
-      'https://johannesippen.com/img/blog/humans-not-users/header.jpg';
+    this.imagePreview = defaultPicture;
   }
 
   ngOnInit() {}
@@ -79,6 +79,8 @@ export class LoginComponent implements OnInit {
     this.user.picture = user.picture;
     this.user.userID = user.userID;
     this.user.item = undefined;
+    this.user.password = '';
+    this.user.confirmPassword = '';
   }
 
   public onPhotoSelected(event: any): void {

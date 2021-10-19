@@ -21,6 +21,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { PostComponent } from './post/post.component';
 import { PostStateFormComponent } from './post-state-form/post-state-form.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SwitchInputComponent } from './switch-input/switch-input.component';
 
 const icons = {
   Globe,
@@ -40,6 +41,7 @@ const icons = {
     PostComponent,
     PostStateFormComponent,
     SearchBarComponent,
+    SwitchInputComponent,
   ],
   exports: [
     LeftLinksComponent,
@@ -47,6 +49,7 @@ const icons = {
     PostComponent,
     PostStateFormComponent,
     SearchBarComponent,
+    SwitchInputComponent,
   ],
   imports: [
     CommonModule,

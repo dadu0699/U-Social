@@ -1,0 +1,12 @@
+<div class="input-wrapper">
+  <div class="switch-content">
+    <label class="input-label" *ngIf="label">{{ label }}</label>
+    <small class="input-info" *ngIf="info">{{ info }}</small>
+  </div>
+
+  <div class="switch-content text-right">
+    <div class="switch" [ngClass]="{ active: isSwitched }">
+      <div class="switch-button"></div>
+    </div>
+  </div>
+</div>

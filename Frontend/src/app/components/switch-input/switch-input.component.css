@@ -1,0 +1,53 @@
+.input-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.input-wrapper .input-label {
+  color: #bec6cf;
+}
+
+.input-wrapper .switch-content {
+  width: 100%;
+}
+
+.input-wrapper .switch-content:last-child {
+  width: 80px;
+}
+
+.switch {
+  width: 50px;
+  height: 28px;
+  border-radius: 50px;
+  display: block;
+  background: #f1f1f5;
+  position: relative;
+}
+
+.switch .switch-button {
+  transition: 0.3s all ease;
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  display: block;
+  background: white;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 2px 4px rgba(37, 38, 94, 0.1);
+  cursor: pointer;
+}
+
+.switch.active {
+  background: #00bc7e;
+}
+
+.switch.active .switch-button {
+  left: 25px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .switch {
+    background: #1e2024;
+  }
+}

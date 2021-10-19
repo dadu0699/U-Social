@@ -180,6 +180,14 @@ input[type="email"]:focus {
   color: #bec6cf;
 }
 
+textarea:disabled,
+input[type="password"]:disabled,
+input[type="text"]:disabled,
+input[type="email"]:disabled {
+  background: #1e2024;
+  color: #bec6cf;
+}
+
 textarea[disabled],
 input[type="password"][disabled],
 input[type="text"][disabled],

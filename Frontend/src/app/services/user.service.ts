@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
@@ -11,8 +12,17 @@ import { User } from '../models/user.model';
 export class UserService {
   private url: string;
 
+  public profileEmitter: EventEmitter<any>;
+  public profileSubs!: Subscription | undefined;
+
   constructor(private _httpClient: HttpClient) {
     this.url = `${environment.url}/user`;
+
+    this.profileEmitter = new EventEmitter();
+  }
+
+  public reloadProfile(): void {
+    this.profileEmitter.emit();
   }
 
   public getUser(): User | undefined {

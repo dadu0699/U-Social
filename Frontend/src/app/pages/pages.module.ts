@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FeatherModule } from 'angular-feather';
-import { Send } from 'angular-feather/icons';
+import { Loader, Send } from 'angular-feather/icons';
 
 import { PagesRoutingModule } from './pages-routing.module';
 
@@ -21,6 +21,7 @@ import { FriendSuggestionsComponent } from './friend-suggestions/friend-suggesti
 import { ProfileComponent } from './profile/profile.component';
 
 const icons = {
+  Loader,
   Send,
 };
 
