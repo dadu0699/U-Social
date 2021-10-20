@@ -30,10 +30,12 @@ Poseyendo la siguiente estructura:
 
 - Función de Lambda: Función que permite la comunicación con un servicio de Amazon mencionado anteriormente.
 
+- Amazon Translate: Servicio que permite la traducción de textos.
+
 - Amazon S3 Bucket: Servicio para el almacenamiento de los archivos distribuyendo cada uno por carpeta.
 
 <div align="center">
-    <img src="https://res.cloudinary.com/dzchmybac/image/upload/v1634698594/USocial/h6ispxx3ew4j0nyxissy.png" width="400">
+    <img src="https://res.cloudinary.com/dzchmybac/image/upload/v1634699011/USocial/b769hiotaoiwrcjytxyg.png" width="400">
     <p align="center">Architecture</p>
 </div>
 <div align="center">
