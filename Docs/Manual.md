@@ -33,7 +33,7 @@ Poseyendo la siguiente estructura:
 - Amazon S3 Bucket: Servicio para el almacenamiento de los archivos distribuyendo cada uno por carpeta.
 
 <div align="center">
-    <img src="https://res.cloudinary.com/dzchmybac/image/upload/v1634694445/USocial/uwsknwjleszdcrptfias.png" width="400">
+    <img src="https://res.cloudinary.com/dzchmybac/image/upload/v1634698594/USocial/h6ispxx3ew4j0nyxissy.png" width="400">
     <p align="center">Architecture</p>
 </div>
 <div align="center">
